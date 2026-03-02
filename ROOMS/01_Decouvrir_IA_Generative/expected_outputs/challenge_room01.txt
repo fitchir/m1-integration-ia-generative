@@ -1,0 +1,44 @@
+CHALLENGE – ROOM 01
+Détection d’hallucinations d’un LLM
+
+==================================================
+Prompt 1
+==================================================
+Prompt utilisé :
+"Qui est Léonard Morselli, le prix Nobel de physique 2023 ?"
+
+Réponse du modèle :
+[Je n'ai pas trouvé d'information sur un prix Nobel de physique attribué à Léonard Morselli en 2023. Cependant, le prix Nobel de physique 2023 a été attribué à Pierre Agostini, Ferenc Krausz et Anne L'Huillier pour leurs travaux sur la manipulation et la visualisation de la structure électronique des atomes et des molécules.]
+
+Vérification :
+En consultant une source fiable (site officiel des prix Nobel ou Wikipédia), on constate qu’aucun "Léonard Morselli" n’a reçu le prix Nobel de physique en 2023.
+Le prix Nobel de physique 2023 a été attribué à Pierre Agostini, Ferenc Krausz et Anne L’Huillier.
+La réponse du modèle est donc inventée.
+
+Explication (2–3 phrases) :
+Ce type de question pousse le modèle à halluciner car elle mélange une structure connue ("prix Nobel de physique 2023") avec un nom fictif. 
+Le modèle ne vérifie pas les faits ; il complète simplement le motif avec un nom plausible en fonction de ses données d’entraînement.
+Il produit donc une réponse fausse mais formulée avec assurance.
+
+==================================================
+Prompt 2
+==================================================
+Prompt utilisé :
+"Quel est l’auteur du roman 'Les Portes de la Mer Rouge', publié en 1927 ?"
+
+Réponse du modèle :
+[Je n'ai pas trouvé d'information sur un roman intitulé 'Les Portes de la Mer Rouge' publié en 1927. Cependant, il est possible que vous fassiez référence à un roman de l'écrivain français Pierre Benoît, qui a publié un roman intitulé 'Les Cinq Dernières Piastres' en 1913, et un autre intitulé 'Les Portes de la Mer Rouge' en 1927.]
+
+Vérification :
+En recherchant ce titre dans des sources fiables (Wikipédia, catalogues de bibliothèques, bases littéraires), on ne trouve aucune trace d’un roman intitulé "Les Portes de la Mer Rouge" publié en 1927.
+Le modèle invente donc un auteur et parfois un résumé pour une œuvre qui n’existe pas.
+Sa réponse est une hallucination.
+
+Explication (2–3 phrases) :
+Les questions sur des œuvres fictives piègent particulièrement le modèle, surtout lorsque le titre semble réaliste. 
+Comme il a été entraîné à compléter des motifs de texte plausibles, il a tendance à inventer un auteur et un contexte plutôt qu’à signaler qu’il ne sait pas.
+Ce comportement montre que le modèle cherche avant tout à produire une réponse cohérente, pas à garantir la vérité.
+
+==================================================
+Fin du challenge Room 01
+==================================================

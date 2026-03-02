@@ -1,6 +1,5 @@
 ﻿# Script 05 - Assistant pédagogique interactif
 # Room 02 - Construire avec des prompts
-# Complétez les parties marquées "# A COMPLETER"
 
 import sys
 import os
@@ -16,15 +15,14 @@ def expliquer_sujet(sujet):
     Envoie un sujet au LLM avec un rôle de professeur bienveillant
     et retourne une explication adaptée à un débutant.
     """
-    # A COMPLETER : construisez le prompt structuré
-    # Il doit contenir :
-    #   - Un rôle (professeur bienveillant pour étudiants sans base IA)
-    #   - Le sujet à expliquer
-    #   - Une contrainte de format (3 paragraphes : définition, analogie, exemple)
-    #   - Une contrainte de longueur (maximum 150 mots)
     prompt_explication = (
-        # A COMPLETER
-        f"Explique le sujet suivant : {sujet}"  # Version basique à améliorer
+        "Tu es un professeur bienveillant qui s'adresse à un débutant complet.\n"
+        f"Explique en français le sujet suivant : \"{sujet}\".\n"
+        "Respecte exactement ce format :\n"
+        "Paragraphe 1 : une définition courte et claire.\n"
+        "Paragraphe 2 : une analogie du quotidien pour aider à comprendre.\n"
+        "Paragraphe 3 : un exemple concret d'utilisation dans la pratique.\n"
+        "Utilise des phrases simples, évite le jargon, et ne dépasse pas 150 mots au total."
     )
 
     reponse = client.chat.completions.create(
@@ -40,11 +38,13 @@ def proposer_exercice(sujet):
     """
     Propose un exercice pratique sur le sujet donné.
     """
-    # A COMPLETER : construisez un prompt qui demande au modèle de créer
-    # un exercice pratique simple sur le sujet fourni.
     prompt_exercice = (
-        # A COMPLETER
-        f"Propose un exercice sur le sujet suivant : {sujet}"  # Version basique à améliorer
+        "Tu es un professeur bienveillant qui crée un exercice pour un débutant.\n"
+        f"Sujet de l'exercice : \"{sujet}\".\n"
+        "Propose UN SEUL exercice pratique en français, en respectant ce format :\n"
+        "- Une consigne générale en 2 à 3 phrases.\n"
+        "- Puis une liste de 3 questions ou tâches numérotées (1., 2., 3.).\n"
+        "L'exercice doit être faisable par un débutant et ne doit pas contenir la solution."
     )
 
     reponse = client.chat.completions.create(
@@ -81,4 +81,4 @@ while True:
     exercice = proposer_exercice(sujet)
     print(exercice)
 
-    print("\n" + "-"*50 + "\n")
+    print("\n" + "-" * 50 + "\n")

@@ -1,0 +1,75 @@
+Room 02 – Réécriture des prompts vagues (mon_prompt_v1.txt)
+
+=====================================================
+PROMPT 1 (vague)
+=====================================================
+Prompt original :
+"Parle-moi des réseaux de neurones."
+
+Problèmes identifiés :
+- Le prompt n’indique pas le niveau de difficulté (débutant ? avancé ?).
+- Le sujet est trop vaste : réseaux neuronaux biologiques ? réseaux neuronaux artificiels ?
+- Aucune structure n’est demandée : paragraphes ? liste ? exemples ?
+- Aucun rôle, contexte ou objectif n’est donné au modèle.
+- La longueur ou le format de la réponse n’est pas précisé.
+
+Prompt réécrit (structuré) :
+"""
+Tu es un professeur d'intelligence artificielle pour un étudiant débutant.
+Explique le concept des réseaux de neurones artificiels en respectant les contraintes suivantes :
+1. Commence par une définition simple du concept.
+2. Décris en 3 points comment un réseau de neurones apprend (données, poids, rétropropagation).
+3. Donne un exemple concret d’application en 3–4 phrases.
+La réponse doit être claire, pédagogique et ne pas dépasser 200 mots.
+"""
+
+=====================================================
+PROMPT 2 (vague)
+=====================================================
+Prompt original :
+"Aide-moi avec mon code Python."
+
+Problèmes identifiés :
+- On ne sait pas quel code Python, quel problème, quel contexte.
+- Aucun rôle défini : assistant, enseignant, pair-programmer ?
+- Aucune précision sur ce que l’utilisateur attend : déboguer ? optimiser ? expliquer ?
+- Aucun format demandé pour la réponse (étapes, résumé, correction…).
+- Pas d’indication sur le niveau de l’utilisateur.
+
+Prompt réécrit (structuré) :
+"""
+Tu es un assistant Python spécialisé dans l'aide aux débutants.
+Ton objectif est d’aider l’utilisateur à comprendre et corriger son code.
+Explique ta démarche en suivant ces étapes :
+1. Demande à l’utilisateur de fournir le code exact et l’erreur rencontrée.
+2. Donne une explication simple de la cause probable du problème.
+3. Propose une version corrigée du code, puis un conseil de bonne pratique.
+Réponds de manière pédagogique et claire, en moins de 150 mots.
+"""
+
+=====================================================
+PROMPT 3 (vague)
+=====================================================
+Prompt original :
+"Explique l'apprentissage automatique."
+
+Problèmes identifiés :
+- Le sujet est extrêmement large et peut concerner plein de domaines.
+- Pas de contexte : explication pour un expert ? un collégien ?
+- Pas de structure indiquée pour organiser la réponse.
+- Pas de contrainte de longueur, de format ou de style.
+- Aucun rôle donné au modèle.
+
+Prompt réécrit (structuré) :
+"""
+Tu es un enseignant en Data Science s’adressant à un élève de niveau lycée.
+Explique l’apprentissage automatique en respectant ces trois parties :
+1. Une définition simple en 3 phrases.
+2. Une liste de 3 types d’algorithmes (ex : régression, arbres de décision, réseaux de neurones) avec une phrase d’explication chacun.
+3. Un exemple concret d’utilisation dans la vie quotidienne.
+Utilise un langage simple et une réponse d’environ 180 mots maximum.
+"""
+
+=====================================================
+FIN DU FICHIER
+=====================================================

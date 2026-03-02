@@ -13,9 +13,10 @@ client = creer_client()
 # Prompt qui demande explicitement une sortie en JSON
 prompt = (
     "Tu es un assistant pédagogique. "
-    "Génère une fiche de révision sur le sujet 'les listes en Python'. "
-    "Réponds UNIQUEMENT avec un objet JSON valide, sans texte avant ni après. "
-    "Utilise exactement cette structure : "
+    "Génère une fiche de révision sur le sujet 'les types de données en Python'. "
+    "Réponds UNIQUEMENT avec un objet JSON valide, sans aucun texte avant ou après. "
+    "N'ajoute pas de commentaires, pas de guillemets simples, pas de texte explicatif. "
+    "Utilise exactement cette structure JSON : "
     '{"titre": "...", "niveau": "débutant", "definition": "...", '
     '"exemples": ["...", "..."], "erreurs_courantes": ["...", "..."]}'
 )

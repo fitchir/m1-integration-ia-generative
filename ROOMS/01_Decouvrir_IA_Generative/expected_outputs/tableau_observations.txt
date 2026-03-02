@@ -3,27 +3,31 @@
 A compléter au fil des étapes de practice.md
 
 Etape 1 - Premier prompt
-  Prompt utilisé     : [votre prompt ici]
-  Réponse obtenue    : [résumez en 1-2 phrases]
-  Jugement           : [ ] correcte  [ ] incorrecte  [ ] impossible à vérifier
+  Prompt utilisé     : [Qui a écrit le roman Les Fleurs du Mal ?]
+  Réponse obtenue    : [Le roman "Les Fleurs du Mal" a été écrit par Charles Baudelaire. Il s'agit d'un recueil de poèmes publié en 1857, qui est considé]
+  Jugement           : [ ] correcte  
 
 Etape 2 - Hallucination
-  Prompt utilisé     : [votre prompt ici]
-  Réponse obtenue    : [résumez en 1-2 phrases]
-  Jugement           : [ ] correcte  [ ] incorrecte  [ ] impossible à vérifier
+  Prompt utilisé     : [Qui est l'auteur du roman 'Le Voyage des Ombres Silencieuses' publié en 1934 ?]
+  Réponse obtenue    : [Je n'ai pas trouvé d'information sur un roman intitulé 'Le Voyage des Ombres Silencieuses' publié en 1934. Il est possible que ce soit un livre peu connu ou un titre qui n'existe pas. Si vous avez plus d'informations sur ce roman, je serais ravi de vous aideroman, je serais ravi roman, je serais ravi de vous aider à trouver l'auteur.]
+  Jugement           : [ ] correcte  
   Ce qui est faux    : [expliquez l'erreur]
 
 Etape 3 - Comparaison de formulations
   Prompt A           : Quelle est la capitale de l'Australie ?
-  Réponse A          : [votre réponse ici]
+  Réponse A          : [La capitale de l'Australie est Canberra.]
   Prompt B           : Quelle est la capitale de l'Australie ? Réponds en une seule phrase.
-  Réponse B          : [votre réponse ici]
-  Différence observée: [oui/non - expliquez si oui]
+  Réponse B          : [La capitale de l'Australie est Canberra.]
+  Différence observée: [non - expliquez si oui]
 
 Etape 4 - Effet de la température
   Prompt utilisé     : [le prompt du script 02]
-  Réponse température 0   (exécution 1) : [résumez]
-  Réponse température 0   (exécution 2) : [résumez]
-  Réponse température 0.9 (exécution 1) : [résumez]
-  Réponse température 0.9 (exécution 2) : [résumez]
-  Variabilité observée : [ ] aucune  [ ] légère  [ ] forte
+  Réponse température 0   (exécution 1) : [Réponse très stable et scientifique : le modèle décrit clairement les étapes de la photosynthèse (capture de lumière, rôle des chloroplastes, transformation CO2 + H2O en glucose + O2).]
+  Réponse température 0   (exécution 2) : [Identique à l’exécution 1 : formulation, structure et contenu inchangés.
+]
+  Réponse température 0.9 (exécution 1) : [Réponse correcte mais plus libre : changement dans l’ordre, plus de reformulations, quelques précisions différentes (pigments photosynthétiques, granum, fixation du carbone).
+]
+  Réponse température 0.9 (exécution 2) : [Contenu toujours valable mais différent : variabilité dans les phrases, les détails ajoutés et la manière d’expliquer les étapes du processus.
+]
+Conclusion rapide :
+La température 0 donne une réponse fixe et stable, alors que la température 0.9 génère une réponse correcte mais changeante à chaque lancement.

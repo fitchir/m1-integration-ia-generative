@@ -2,30 +2,87 @@
 ==================================
 
 --- Réponse au prompt VAGUE ---
-[Collez ici la réponse obtenue avec le prompt vague]
+Les réseaux de neurones sont un type d'intelligence artificielle inspiré par le fonctionnement du cerveau humain. Ils sont composés de plusieurs couches de neurones artificiels, appelés "nœuds" ou "neurones", qui sont connectés entre eux par des synapses.
 
+Un neurone artificiel est une unité de calcul qui prend en entrée plusieurs signaux d'entrée, les traite et les envoie à une sortie. Chaque neurone a plusieurs entrées, appelées "synapses", qui reçoivent des signaux d'autres neurones. Les signaux d'entrée sont multipliés par des poids, qui déterminent l'importance de chaque signal. Les signaux multipliés sont ensuite additionnés et soumis à une fonction d'activation, qui détermine la sortie du neurone.
 
---- Réponse au prompt STRUCTURE ---
-[Collez ici la réponse obtenue avec le prompt structuré]
+Il existe plusieurs types de réseaux de neurones, notamment :
+1. Réseau de neurones à couches cachées : ce type de réseau a plusieurs couches de neurones, chacune traitant les signaux d'entrée de manière différente.
+2. Réseau de neurones convolutionnel : ce type de réseau utilise des filtres convolutionnels pour traiter les données d'entrée, ce qui permet de détecter des motifs.
+3. Réseau de neurones récurrent : ce type de réseau utilise des boucles de rétroaction pour traiter les signaux d'entrée, ce qui permet de prendre en compte l'historique des données.
 
+--- Réponse au prompt STRUCTURÉ ---
+Bonjour ! Je suis ravi de vous présenter le concept des réseaux de neurones artificiels.
+
+Définition simple :
+Un réseau de neurones artificiel est un modèle informatique inspiré de la structure et du fonctionnement du cerveau humain. Il est composé de neurones artificiels (ou "nœuds") qui reçoivent des entrées, les traitent et les transforment en sorties.
+
+Comment un réseau de neurones apprend :
+1. Données : le réseau reçoit des données d'entrée (images, sons, textes, etc.).
+2. Poids : les neurones artificiels ont des poids associés à chaque entrée, qui déterminent l'importance de chaque information.
+3. Rétropropagation : lorsque le réseau commet une erreur, les poids sont ajustés pour minimiser l'erreur. Les erreurs sont propagées à rebours pour ajuster les poids.
+
+Exemple concret :
+Un exemple d'application des réseaux de neurones est la reconnaissance d'images. Un réseau de neurones peut être entraîné à reconnaître des objets (voitures, chiens, etc.) à partir d'images. Lorsqu’il reçoit une nouvelle image, il peut la classer avec une certaine précision.
 
 --- Analyse ---
-Quelle réponse est plus utile et pourquoi ? (2-3 phrases)
-[Votre analyse ici]
+La réponse au prompt structuré est plus utile, car elle est organisée selon les parties demandées (définition, mécanisme d’apprentissage, exemple concret), ce qui la rend directement exploitable pour un cours ou une révision.  
+Le prompt vague laisse le modèle répondre de manière plus libre : la réponse peut être correcte mais désorganisée, trop longue ou orientée sur des détails techniques inutiles pour un débutant.  
+Le prompt structuré améliore donc la clarté, l’adaptation au public cible et la qualité pédagogique de la réponse.
 
+----------------------------------------
+Test JSON – Fiche de révision
+----------------------------------------
+Le JSON retourné était-il valide du premier coup ?  
+→ Réponse : oui.
 
---- Test JSON ---
-Le JSON retourné était-il valide du premier coup ? [ ] oui  [ ] non
-Si non, quelle modification du prompt a permis de corriger ?
-[Votre observation ici]
+Le modèle renvoie un JSON valide que le script parvient à parser avec json.loads().  
+Les champs "titre", "niveau", "definition", "exemples" et "erreurs_courantes" sont bien présents et utilisables dans un programme Python.
 
+========================================
+JSON – Changement de sujet (ex : types de données Python)
+========================================
 
---- Bilan ---
-1. Différence la plus importante entre prompt vague et prompt structuré :
-[Votre réponse ici]
+Observation :
+J’ai modifié le prompt pour demander une fiche de révision sur un autre sujet ("les types de données en Python") en gardant la même structure JSON.
 
-2. Dans quel cas demanderiez-vous une sortie JSON ?
-[Votre réponse ici]
+Résultat :
+Le JSON était également valide du premier coup : la structure demandée est respectée et toutes les clés attendues sont présentes. Je n’ai pas eu besoin de corriger le prompt, car la contrainte de format était déjà suffisamment précise.
 
-3. Comment le rôle a-t-il changé la qualité des réponses ?
-[Votre réponse ici]
+Analyse :
+Plus le prompt précise le format attendu (structure exacte, absence de texte hors JSON, absence de commentaires), plus le modèle respecte le format JSON.  
+Cela permet d’exploiter directement la réponse dans un script Python. Si les contraintes sont vagues ou ambiguës, le modèle peut ajouter du texte autour ou des éléments non valides, ce qui provoque des erreurs de parsing.
+
+========================================
+Assistant pédagogique – Explications et exercices
+========================================
+
+Sujets testés :
+- les listes en Python
+- les méthodes HTTP
+
+Observation :
+Pour chaque sujet, l’assistant pédagogique génère d’abord une explication en trois parties (définition, analogie, exemple concret), puis propose un exercice avec une consigne générale et plusieurs tâches. Les réponses sont globalement claires et adaptées à un niveau débutant.
+
+Analyse :
+Le rôle de "professeur bienveillant" et les contraintes de format (paragraphe 1, 2, 3 + structure de l’exercice) améliorent nettement la qualité des réponses.  
+L’assistant ne se contente plus d’une explication brute : il suit une structure pédagogique stable, ce qui le rend utilisable comme outil d’apprentissage en ligne de commande.
+
+========================================
+Bilan – Room 02
+========================================
+
+1) Différence la plus importante entre prompt vague et prompt structuré
+
+La différence principale est que le prompt structuré précise le rôle du modèle, le public visé, la structure attendue de la réponse et parfois la longueur maximale.  
+Le prompt vague laisse le modèle décider seul de ce qu’il va dire, ce qui peut donner des réponses correctes mais désorganisées ou trop générales. Avec un prompt structuré, la réponse est beaucoup plus alignée sur mon besoin réel (cours, révision, exercice, etc.).
+
+2) Dans quel cas demander une sortie JSON plutôt qu’une réponse en texte libre ?
+
+Je demanderais une sortie JSON lorsque je veux que la réponse du modèle soit traitée automatiquement par un programme Python ou intégrée dans une application (fiche de révision, quiz, configuration, données structurées…).  
+Le JSON permet de récupérer facilement des champs précis (titre, exemples, erreurs courantes) et d’éviter le parsing d’un texte libre, qui serait plus fragile et moins fiable.
+
+3) Comment le rôle donné au modèle a changé la qualité des réponses ?
+
+Le fait de donner un rôle explicite (professeur bienveillant, assistant Python pour débutants) rend les réponses plus adaptées au niveau de l’utilisateur et plus pédagogiques.  
+Le modèle adopte un ton plus clair, prend le temps d’expliquer, utilise des analogies et des exemples utiles, plutôt que de donner une réponse trop technique ou trop concise. Le rôle agit comme un “cadre mental” qui oriente la manière dont la réponse est formulée.
