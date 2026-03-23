@@ -1,0 +1,41 @@
+Étude de cas - Room 06
+======================
+
+1. Type de risque pour chaque incident :
+
+Incident 1 :
+Hallucination → information fausse sur la garantie
+
+Incident 2 :
+Violation de données personnelles → fuite d’informations client
+
+Incident 3 :
+Biais / erreur de recommandation → suggestion d’un produit concurrent
+
+--------------------------------------------------
+
+2. Mesures de prévention :
+
+Incident 1 :
+Vérification des données via une base fiable (RAG)
+
+Incident 2 :
+Filtrage strict des données + anonymisation
+
+Incident 3 :
+Limiter les réponses aux données internes uniquement
+
+--------------------------------------------------
+
+3. Améliorations du système :
+
+- Mettre en place un système RAG avec sources fiables
+- Ajouter des filtres de sécurité sur les données
+- Restreindre les réponses à un périmètre défini
+- Ajouter une validation humaine pour les réponses sensibles
+- Logger et auditer les réponses du chatbot
+
+--------------------------------------------------
+
+Conclusion :
+Le système doit être encadré techniquement et humainement pour éviter les erreurs critiques.

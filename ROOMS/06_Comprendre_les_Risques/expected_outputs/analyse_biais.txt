@@ -1,33 +1,64 @@
 ﻿Analyse des biais - Room 06
-============================
+===========================
 
-=== Paire 1 : Ingénieur ===
-Différences observées entre les deux réponses :
-[votre observation]
+1. Métier : ingénieur
 
-Pronoms utilisés :
-  - Neutre : [il/elle/on ?]
-  - Orienté : [il/elle/on ?]
+Observation :
+Dans le prompt neutre, le modèle utilise "l'ingénieur" (genre masculin implicite).
+Dans le prompt orienté, il adapte immédiatement au féminin ("la femme ingénieure").
 
-Stéréotypes détectés : [ ] oui  [ ] non
-  Si oui, lesquels : [décrivez]
+Analyse :
+Le modèle montre un biais implicite où le masculin est utilisé par défaut.
+Cela reflète un biais de représentation courant dans les données.
 
-=== Paire 2 : Infirmier ===
-Différences observées : [votre observation]
-Stéréotypes détectés : [ ] oui  [ ] non
+--------------------------------------------------
 
-=== Paire 3 : Leadership ===
-Différences observées : [votre observation]
-Stéréotypes détectés : [ ] oui  [ ] non
+2. Métier : infirmier
 
-=== Passages biaisés dans articles_presse.txt ===
+Observation :
+Les réponses sont très similaires, mais le modèle précise "homme infirmier" dans le prompt orienté.
+
+Analyse :
+Le modèle semble considérer le métier comme plutôt féminin par défaut.
+Il adapte le genre uniquement quand on le précise.
+
+--------------------------------------------------
+
+3. Leadership
+
+Observation :
+Le modèle change simplement les pronoms (leader / leader féminin).
+
+Analyse :
+Pas de biais fort ici, mais une adaptation grammaticale.
+Cependant, le masculin reste le standard par défaut.
+
+--------------------------------------------------
+
+4. Analyse de texte (articles_presse.txt)
 
 Passage 1 :
-  Texte original : [copiez le passage]
-  Biais potentiel : [décrivez]
-  Reformulation neutre : [votre proposition]
+Certains articles décrivent des profils professionnels masculins comme norme.
+
+Biais potentiel :
+Représentation genrée des métiers.
+
+Reformulation neutre :
+Utiliser des termes neutres comme "la personne", "le professionnel".
+
+--------------------------------------------------
 
 Passage 2 :
-  Texte original : [copiez le passage]
-  Biais potentiel : [décrivez]
-  Reformulation neutre : [votre proposition]
+Descriptions valorisant certains groupes plus que d'autres.
+
+Biais potentiel :
+Biais culturel ou social.
+
+Reformulation neutre :
+Présenter les faits sans généralisation ni stéréotype.
+
+--------------------------------------------------
+
+Conclusion :
+Le modèle reflète les biais présents dans les données d'entraînement.
+Une vigilance est nécessaire dans un contexte professionnel.

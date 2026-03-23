@@ -1,0 +1,17 @@
+Bonnes pratiques - Room 06
+==========================
+
+1. Toujours vérifier les faits
+Un LLM peut produire des informations fausses, il faut toujours vérifier avec une source fiable.
+
+2. Ne jamais envoyer de données sensibles
+Les données personnelles doivent être anonymisées pour respecter le RGPD.
+
+3. Encadrer les réponses du modèle
+Limiter le modèle à un contexte précis (RAG) pour éviter les hallucinations.
+
+4. Tester les biais du modèle
+Analyser les réponses pour détecter des stéréotypes ou discriminations.
+
+5. Garder une validation humaine
+L'utilisateur reste responsable, une validation humaine est nécessaire avant publication.

@@ -1,29 +1,40 @@
 ﻿Grille de vérification des faits - Room 06
-=============================================
+=========================================
 
-Question 1 : Quelle est la population de la France en 2023 ?
-  Réponse du modèle  : [collez ici]
-  Jugement           : [ ] vraie  [ ] fausse  [ ] non vérifiable
-  Source de vérification : [citez la source]
+Question 1 :
+Population de la France en 2023
+Réponse du modèle : ~67,2 millions
+Vérification : INSEE (https://www.insee.fr)
+Conclusion : VRAIE
 
-Question 2 : Qui a remporté le prix Nobel de littérature en 2022 ?
-  Réponse du modèle  : [collez ici]
-  Jugement           : [ ] vraie  [ ] fausse  [ ] non vérifiable
-  Source de vérification : [citez la source]
+--------------------------------------------------
 
-Question 3 : Résume le livre 'Les Échos du Silence Éternel' de Marc Delaunay.
-  Réponse du modèle  : [collez ici]
-  Jugement           : [ ] vraie  [ ] fausse  [ ] non vérifiable
-  Source de vérification : [citez la source]
-  Note : ce livre existe-t-il vraiment ?
+Question 2 :
+Prix Nobel de littérature 2022
+Réponse du modèle : Annie Ernaux
+Vérification : site officiel Nobel Prize (https://www.nobelprize.org)
+Conclusion : VRAIE
 
-Question 4 : En quelle année la tour Eiffel a-t-elle été construite ?
-  Réponse du modèle  : [collez ici]
-  Jugement           : [ ] vraie  [ ] fausse  [ ] non vérifiable
-  Source de vérification : [citez la source]
+--------------------------------------------------
 
-Question 5 : Étude de Zhang et al. (2023) sur le télétravail dans Nature
-  Réponse du modèle  : [collez ici]
-  Jugement           : [ ] vraie  [ ] fausse  [ ] non vérifiable
-  Source de vérification : [citez la source]
-  Note : cette étude existe-t-elle vraiment ?
+Question 3 :
+Livre "Les Échos du Silence Éternel"
+Réponse du modèle : dit ne pas connaître
+Vérification : aucune trace sur Google / bases de livres
+Conclusion : NON VÉRIFIABLE (probablement fictif, réponse correcte du modèle)
+
+--------------------------------------------------
+
+Question 4 :
+Construction de la tour Eiffel
+Réponse : 1887-1889
+Vérification : Wikipédia / sources historiques
+Conclusion : VRAIE
+
+--------------------------------------------------
+
+Question 5 :
+Étude Zhang et al. (2023)
+Réponse : dit ne pas trouver
+Vérification : aucune trace sur Nature
+Conclusion : NON VÉRIFIABLE (réponse prudente, pas hallucination)
