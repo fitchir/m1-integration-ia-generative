@@ -2,52 +2,67 @@
 # Room 04 - Connecter une API
 # Lancer avec : python -m uvicorn code.mini_api_fastapi:app --reload --port 8000
 
-import sys
-import os
-sys.path.append(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
-
 from fastapi import FastAPI
 from pydantic import BaseModel
+import sys
+import os
+
+sys.path.append(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
+
 from utils import creer_client, MODELE
 
+app = FastAPI()
 client = creer_client()
 
-app = FastAPI(title="Mini Assistant LLM", version="1.0")
+# Historique en mémoire
+historique = []
+
+MAX_MESSAGES = 20  # 10 échanges (user + assistant)
 
 
 class QuestionRequest(BaseModel):
     question: str
 
 
-class ReponseResult(BaseModel):
-    question: str
-    reponse: str
-    tokens_utilises: int
+@app.get("/")
+def root():
+    return {"message": "Le serveur fonctionne correctement."}
 
 
-@app.post("/question", response_model=ReponseResult)
-def poser_question(req: QuestionRequest):
-    """Recoit une question, l'envoie au LLM et retourne la reponse."""
-    completion = client.chat.completions.create(
+@app.post("/question")
+def poser_question(data: QuestionRequest):
+    global historique
+
+    # Ajouter la question utilisateur
+    historique.append({"role": "user", "content": data.question})
+
+    # Limiter historique
+    historique = historique[-MAX_MESSAGES:]
+
+    # Appel au modèle avec historique
+    reponse = client.chat.completions.create(
         model=MODELE,
-        messages=[
-            {"role": "system", "content": "Tu es un assistant concis et pedagogique."},
-            {"role": "user", "content": req.question}
-        ],
+        messages=historique,
         temperature=0.3,
         max_tokens=300
     )
 
-    tokens = completion.usage.total_tokens if completion.usage else 0
+    texte = reponse.choices[0].message.content
 
-    return ReponseResult(
-        question=req.question,
-        reponse=completion.choices[0].message.content,
-        tokens_utilises=tokens
-    )
+    # Ajouter réponse
+    historique.append({"role": "assistant", "content": texte})
+    historique = historique[-MAX_MESSAGES:]
+
+    return {"reponse": texte}
 
 
-@app.get("/sante")
-def verifier_sante():
-    """Retourne un message simple pour verifier que le serveur est operationnel."""
-    return {"statut": "ok", "message": "Le serveur fonctionne correctement."}
+@app.get("/historique")
+def get_historique():
+    return {"historique": historique}
+
+
+@app.post("/reset")
+def reset():
+    global historique
+    historique = []
+    return {"message": "Historique vidé"}

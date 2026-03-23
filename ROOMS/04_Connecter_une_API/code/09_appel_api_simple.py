@@ -17,15 +17,17 @@ print(f"Prompt : {prompt}")
 print()
 
 # Envoi de la requête à l'API
-reponse = client.chat.completions.create(
-    model=MODELE,
-    messages=[
-        {"role": "system", "content": "Tu es un développeur Python expérimenté."},
-        {"role": "user", "content": prompt}
-    ],
-    temperature=0.3,
-    max_tokens=300
-)
+try:
+    reponse = client.chat.completions.create(
+        model=MODELE,
+        messages=[{"role": "user", "content": prompt}],
+        temperature=0.3,
+        max_tokens=300
+    )
+except Exception as e:
+    print("❌ Une erreur est survenue lors de l'appel API")
+    print(f"Détail : {e}")
+    exit()
 
 # Affichage de la réponse
 print("=== Réponse du modèle ===")

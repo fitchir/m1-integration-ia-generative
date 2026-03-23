@@ -4,56 +4,65 @@
 
 import requests
 
-# Adresse du serveur local
-URL_SERVEUR = "http://127.0.0.1:8000"
+BASE_URL = "http://127.0.0.1:8000"
 
-# Vérification que le serveur est opérationnel
-print("=== Vérification du serveur ===")
-try:
-    r = requests.get(f"{URL_SERVEUR}/sante")
-    if r.status_code == 200:
-        print(f"Serveur OK : {r.json()['message']}")
-    else:
-        print(f"Le serveur a répondu avec le code {r.status_code}")
-except requests.ConnectionError:
-    print("Impossible de se connecter au serveur.")
-    print("Assurez-vous que le serveur est lancé avec :")
-    print("  uvicorn code.11_mini_api_fastapi:app --reload --port 8000")
-    exit(1)
 
-print()
-
-# Boucle interactive : l'utilisateur pose des questions
-print("=== Client interactif ===")
-print("Posez vos questions au serveur local. Tapez 'quitter' pour arrêter.")
-print()
-
-while True:
-    question = input("Votre question : ").strip()
-
-    if question.lower() == "quitter":
-        print("Au revoir.")
-        break
-
-    if not question:
-        print("Veuillez entrer une question.")
-        continue
-
-    # Envoi de la question au serveur local via une requête POST
+def verifier():
     try:
-        r = requests.post(
-            f"{URL_SERVEUR}/question",
-            json={"question": question}
-        )
-
+        r = requests.get(f"{BASE_URL}/")
         if r.status_code == 200:
-            data = r.json()
-            print(f"\nRéponse : {data['reponse']}")
-            print(f"Tokens utilisés : {data['tokens_utilises']}")
-        else:
-            print(f"Erreur du serveur : {r.status_code}")
+            print("=== Serveur OK ===")
+            print(r.json()["message"])
+            print()
+            return True
+    except:
+        print("Serveur inaccessible")
+    return False
 
-    except requests.ConnectionError:
-        print("Connexion perdue avec le serveur.")
 
-    print()
+def afficher_historique():
+    r = requests.get(f"{BASE_URL}/historique")
+    if r.status_code == 200:
+        data = r.json()["historique"]
+        print("\n=== HISTORIQUE ===")
+        if not data:
+            print("(vide)")
+        for msg in data:
+            print(f"{msg['role']} : {msg['content']}")
+        print()
+
+
+def reset():
+    requests.post(f"{BASE_URL}/reset")
+    print("Historique vidé\n")
+
+
+def poser(question):
+    r = requests.post(
+        f"{BASE_URL}/question",
+        json={"question": question}
+    )
+
+    if r.status_code == 200:
+        print("\n=== Réponse ===")
+        print(r.json()["reponse"])
+        afficher_historique()
+    else:
+        print("Erreur :", r.text)
+
+
+if __name__ == "__main__":
+    if verifier():
+        print("Tape 'historique', 'reset' ou 'quitter'\n")
+
+        while True:
+            q = input("Question : ")
+
+            if q == "quitter":
+                break
+            elif q == "historique":
+                afficher_historique()
+            elif q == "reset":
+                reset()
+            else:
+                poser(q)

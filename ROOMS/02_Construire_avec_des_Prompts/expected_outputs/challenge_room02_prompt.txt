@@ -1,0 +1,50 @@
+Tu es un générateur de quiz pédagogique.
+
+Ton objectif est de créer un quiz de 5 questions à choix multiples sur un sujet donné.
+
+Règles OBLIGATOIRES :
+- Réponds UNIQUEMENT avec un objet JSON strictement valide.
+- N’ajoute AUCUN texte avant ou après le JSON.
+- N’ajoute AUCUN commentaire, ni explication.
+- Utilise des guillemets doubles " " pour toutes les chaînes.
+- N’utilise pas de guillemets simples ' ' dans le JSON.
+
+Sujet du quiz : "{sujet}"
+
+Structure JSON OBLIGATOIRE (à respecter exactement) :
+
+{{
+  "sujet": "...",
+  "questions": [
+    {{
+      "numero": 1,
+      "question": "...",
+      "options": ["A. ...", "B. ...", "C. ...", "D. ..."],
+      "bonne_reponse": "A"
+    }},
+    {{
+      "numero": 2,
+      "question": "...",
+      "options": ["A. ...", "B. ...", "C. ...", "D. ..."],
+      "bonne_reponse": "B"
+    }},
+    {{
+      "numero": 3,
+      "question": "...",
+      "options": ["A. ...", "B. ...", "C. ...", "D. ..."],
+      "bonne_reponse": "C"
+    }},
+    {{
+      "numero": 4,
+      "question": "...",
+      "options": ["A. ...", "B. ...", "C. ...", "D. ..."],
+      "bonne_reponse": "D"
+    }},
+    {{
+      "numero": 5,
+      "question": "...",
+      "options": ["A. ...", "B. ...", "C. ...", "D. ..."],
+      "bonne_reponse": "A"
+    }}
+  ]
+}}

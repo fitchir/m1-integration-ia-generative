@@ -1,4 +1,4 @@
-﻿import os
+import os
 from dotenv import load_dotenv
 from openai import OpenAI
 
@@ -10,16 +10,16 @@ client = OpenAI(
     api_key=HF_TOKEN,
 )
 
-prompt = "Explique en 3 phrases simples ce qu'est une base de données relationnelle."
-
 completion = client.chat.completions.create(
     model="meta-llama/Llama-3.1-8B-Instruct:cerebras",
-    messages=[{"role": "user", "content": prompt}],
+    messages=[
+        {
+            "role": "user",
+            "content": "Explique en 3 phrases simples ce qu'est une base de données relationnelle."
+        }
+    ],
     max_tokens=200,
-    temperature=0.3,
 )
 
-print("=== Interrogation du modèle 2 ===")
-print(f"Prompt : {prompt}\n")
 print("=== Réponse ===")
 print(completion.choices[0].message.content)

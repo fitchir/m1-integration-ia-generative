@@ -1,0 +1,17 @@
+Challenge Room 04 - Historique
+==============================
+
+Echange 1
+Question : Je veux apprendre Python
+Réponse : Python est un langage simple et puissant utilisé pour le développement web, les scripts et la data.
+
+Echange 2
+Question : Donne-moi un conseil
+Réponse : Commence par apprendre les bases comme les variables, les boucles et les fonctions.
+
+Echange 3
+Question : Donne-moi un exercice
+Réponse : Crée un programme qui demande un prénom et affiche un message personnalisé.
+
+Conclusion :
+Le modèle se souvient du contexte grâce à l’historique envoyé à chaque requête.
