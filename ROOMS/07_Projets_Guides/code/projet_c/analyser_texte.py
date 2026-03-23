@@ -1,71 +1,103 @@
-﻿# Projet C - Assistant analyse de texte avec sortie JSON
-# Room 07 - Projets guidés
-
-import json
-import os
+﻿import os
 import sys
+import json
 
+# Pour importer utils.py depuis la racine du projet
 sys.path.append(os.path.join(os.path.dirname(__file__), "..", "..", "..", ".."))
+
 from utils import creer_client, MODELE
 
 client = creer_client()
 
-MAX_TENTATIVES = 3
 
-
-def charger_articles(chemin):
-    """
-    Charge le fichier d'articles et les sépare.
-    Les articles sont séparés par une ligne '---'.
-    """
-    with open(chemin, "r", encoding="utf-8") as f:
+def charger_articles(chemin_fichier):
+    with open(chemin_fichier, "r", encoding="utf-8") as f:
         contenu = f.read()
-    articles = [a.strip() for a in contenu.split("---") if a.strip()]
-    return articles
+
+    # Découpage simple sur lignes vides
+    blocs = [bloc.strip() for bloc in contenu.split("\n\n") if bloc.strip()]
+    return blocs
 
 
-def analyser_article(texte_article, numero):
-    """
-    A COMPLETER :
-    - Construire un prompt qui demande au modèle d'analyser le texte
-    - Exiger une sortie JSON avec les clés : article_numero, sentiment, mots_cles, resume
-    - Tenter jusqu'à MAX_TENTATIVES fois si le JSON est invalide
-    - Utiliser client et MODELE
-    - Retourner le dictionnaire Python résultant, ou None si échec
-    """
-    # A COMPLETER
-    pass
+def construire_prompt(texte):
+    return f"""
+Tu es un assistant d'analyse de texte.
+
+Analyse le texte suivant et retourne UNIQUEMENT un objet JSON valide, sans texte avant ni après.
+
+Structure attendue :
+{{
+  "sentiment": "positif | negatif | neutre",
+  "mots_cles": ["mot1", "mot2", "mot3", "mot4", "mot5"],
+  "resume": "Résumé en 2 phrases."
+}}
+
+Contraintes :
+- "sentiment" doit être exactement : positif, negatif ou neutre
+- "mots_cles" doit contenir exactement 5 éléments
+- "resume" doit contenir 2 phrases maximum
+- Réponds uniquement en JSON valide
+
+Texte à analyser :
+\"\"\"
+{texte}
+\"\"\"
+"""
 
 
-# --- Programme principal ---
+def analyser_un_texte(texte):
+    prompt = construire_prompt(texte)
 
-chemin_articles = os.path.join(os.path.dirname(__file__), "..", "..", "..", "datasets", "articles_presse.txt")
+    reponse = client.chat.completions.create(
+        model=MODELE,
+        messages=[{"role": "user", "content": prompt}],
+        temperature=0.2,
+        max_tokens=300
+    )
 
-print("Chargement des articles...")
-articles = charger_articles(chemin_articles)
-print(f"{len(articles)} articles chargés.")
-print()
+    contenu = reponse.choices[0].message.content
 
-resultats = []
+    # Vérification JSON
+    data = json.loads(contenu)
 
-for i, article in enumerate(articles, 1):
-    print(f"=== Analyse de l'article {i} ===")
-    print(f"Début : {article[:100]}...")
+    # Vérification minimale de structure
+    assert "sentiment" in data
+    assert "mots_cles" in data
+    assert "resume" in data
+    assert isinstance(data["mots_cles"], list)
+    assert len(data["mots_cles"]) == 5
 
-    resultat = analyser_article(article, i)
+    return data
 
-    if resultat:
-        resultats.append(resultat)
-        print(f"Sentiment  : {resultat.get('sentiment', 'N/A')}")
-        print(f"Mots-clés  : {resultat.get('mots_cles', [])}")
-        print(f"Résumé     : {resultat.get('resume', 'N/A')}")
-    else:
-        print("Echec de l'analyse pour cet article.")
 
-    print()
+if __name__ == "__main__":
+    chemin_articles = "C:/Users/itchi/Int-gration-d-IA-g-n-rative-M1-LDFS/datasets/articles_presse.txt"
 
-chemin_sortie = os.path.join(os.path.dirname(__file__), "..", "expected_outputs", "resultats_analyse.json")
-with open(chemin_sortie, "w", encoding="utf-8") as f:
-    json.dump(resultats, f, ensure_ascii=False, indent=2)
+    print("=== Chargement des articles ===")
+    articles = charger_articles(chemin_articles)
+    print(f"{len(articles)} blocs trouvés\n")
 
-print(f"Résultats sauvegardés dans {chemin_sortie}")
+    resultats = []
+
+    for i, article in enumerate(articles[:3], start=1):
+        print(f"--- Analyse article {i} ---")
+        try:
+            analyse = analyser_un_texte(article)
+            resultats.append({
+                "article": i,
+                "analyse": analyse
+            })
+            print(json.dumps(analyse, ensure_ascii=False, indent=2))
+            print()
+        except json.JSONDecodeError as e:
+            print(f"Erreur JSON sur l'article {i} : {e}\n")
+        except Exception as e:
+            print(f"Erreur sur l'article {i} : {e}\n")
+
+    # Sauvegarde résultats
+    sortie = "C:/Users/itchi/Int-gration-d-IA-g-n-rative-M1-LDFS/ROOMS/07_Projets_Guides/expected_outputs/resultats_analyse.json"
+    with open(sortie, "w", encoding="utf-8") as f:
+        json.dump(resultats, f, ensure_ascii=False, indent=2)
+
+    print("=== Sauvegarde terminée ===")
+    print(f"Résultats enregistrés dans : {sortie}")
